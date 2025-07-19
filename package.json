@@ -1,0 +1,15 @@
+{
+  "name": "rest-client-mikroorm",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start:server": "node server/index.mjs",
+    "start:client": "cd client && npm run dev"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "^6.4.16",
+    "@mikro-orm/sqlite": "^6.4.16",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
