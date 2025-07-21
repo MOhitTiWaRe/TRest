@@ -13,13 +13,14 @@ app.use(cors());
 let orm;
 async function initORM() {
   orm = await MikroORM.init({
-     driver: PostgreSqlDriver,
+    driver: PostgreSqlDriver,
     entities: [RequestLogSchema],
-    dbName: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST || 'localhost',
-    port: parseInt(process.env.DB_PORT || '5432'),
+    // dbName: process.env.DB_NAME,
+    // user: process.env.DB_USER,
+    // password: process.env.DB_PASSWORD,
+    // host: process.env.DB_HOST || 'localhost',
+    // port: parseInt(process.env.DB_PORT || '5432'),
+    clientUrl: process.env.DATABASE_URL,
     forceEntityConstructor: true,
   });
   await orm.getSchemaGenerator().updateSchema();
@@ -68,4 +69,5 @@ app.get('/history', async (req, res) => {
   });
 });
 
-app.listen(4000, () => console.log('Server running on http://localhost:4000'));
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
