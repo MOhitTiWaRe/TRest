@@ -1,4 +1,4 @@
-# ⚡ Postman Clone
+# ⚡ TRest 
 
 A lightweight Postman-like tool built with **React (Vite)** and **Express.js** + **MikroORM** (PostgreSQL) for sending HTTP requests and viewing request history.
 
