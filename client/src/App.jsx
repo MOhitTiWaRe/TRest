@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-const BASE_URL = import.meta.env.VITE_API_URL
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 function App() {
   const [method, setMethod] = useState('GET');
@@ -31,7 +31,7 @@ function App() {
   };
 
   const fetchLogs = async () => {
-    const res = await fetch(`${BASE_URL}history?page=${page}&limit=5`);
+    const res = await fetch(`${BASE_URL}/history?page=${page}&limit=5`);
     const result = await res.json();
     setLogs(result.logs);
     setTotalPages(result.totalPages);
