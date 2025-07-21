@@ -9,11 +9,11 @@ export class RequestLog {
 export const RequestLogSchema = new EntitySchema({
   class: RequestLog,
   properties: {
-    id: { type: 'number', primary: true },
+    id: { type: 'number', primary: true, autoincrement: true },
     method: { type: 'string' },
     url: { type: 'string' },
     body: { type: 'string', nullable: true },
     response: { type: 'text' },
-    createdAt: { type: 'Date' },
+    createdAt: { type: 'Date', onCreate: () => new Date() },
   },
 });

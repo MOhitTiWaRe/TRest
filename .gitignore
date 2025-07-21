@@ -1,0 +1,26 @@
+node_modules/
+.env
+.DS_Store
+dist/
+build/
+.vscode/
+*.log
+npm-debug.log*
+
+# Ignore from React (client)
+client/node_modules/
+client/dist/
+client/.env
+client/.DS_Store
+
+# Ignore from Express (server)
+server/node_modules/
+server/dist/
+server/.env
+server/.DS_Store
+
+# Optional: if you're using TypeScript anywhere
+*.tsbuildinfo
+
+# Optional: Ignore Render build cache
+render.yaml

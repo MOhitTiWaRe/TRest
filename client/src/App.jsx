@@ -14,7 +14,7 @@ function App() {
   const sendRequest = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:4000/request', {
+        const res = await fetch(`${process.env.API_URL}/request`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ method, url, body }),
@@ -30,7 +30,7 @@ function App() {
   };
 
   const fetchLogs = async () => {
-    const res = await fetch(`http://localhost:4000/history?page=${page}&limit=5`);
+    const res = await fetch(`${process.env._API_URL}history?page=${page}&limit=5`);
     const result = await res.json();
     setLogs(result.logs);
     setTotalPages(result.totalPages);

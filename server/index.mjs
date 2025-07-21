@@ -1,8 +1,11 @@
 import express from 'express';
 import cors from 'cors';
-import { MikroORM } from '@mikro-orm/sqlite';
+import dotenv from 'dotenv';
+import {MikroORM} from '@mikro-orm/core';
+import { PostgreSqlDriver} from '@mikro-orm/postgresql';
 import { RequestLogSchema, RequestLog } from './entities/RequestLog.js';
 
+dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -10,8 +13,13 @@ app.use(cors());
 let orm;
 async function initORM() {
   orm = await MikroORM.init({
+     driver: PostgreSqlDriver,
     entities: [RequestLogSchema],
-    dbName: 'requests.sqlite',
+    dbName: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST || 'localhost',
+    port: parseInt(process.env.DB_PORT || '5432'),
     forceEntityConstructor: true,
   });
   await orm.getSchemaGenerator().updateSchema();
