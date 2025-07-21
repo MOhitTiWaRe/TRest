@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+const BASE_URL = import.meta.env.VITE_API_URL
 
 function App() {
   const [method, setMethod] = useState('GET');
@@ -14,7 +15,7 @@ function App() {
   const sendRequest = async () => {
     setLoading(true);
     try {
-        const res = await fetch(`${process.env.API_URL}/request`, {
+        const res = await fetch(`${BASE_URL}/request`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ method, url, body }),
@@ -30,7 +31,7 @@ function App() {
   };
 
   const fetchLogs = async () => {
-    const res = await fetch(`${process.env._API_URL}history?page=${page}&limit=5`);
+    const res = await fetch(`${BASE_URL}history?page=${page}&limit=5`);
     const result = await res.json();
     setLogs(result.logs);
     setTotalPages(result.totalPages);
